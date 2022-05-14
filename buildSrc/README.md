@@ -1,0 +1,2 @@
+
+[Gradle Dependency Management: Using Kotlin and buildSrc for build.gradle Autocomplete in Android Studio](https://caster.io/lessons/gradle-dependency-management-using-kotlin-and-buildsrc-for-buildgradle-autocomplete-in-android-studio)

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">NewsApp Test</string>
+
+    <string name="api_key">9446542463ad4226b117af0a3cc035ce</string>
+    <string name="api_url">https://newsapi.org/v2/</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="full_name">Full Name</string>
 </resources>

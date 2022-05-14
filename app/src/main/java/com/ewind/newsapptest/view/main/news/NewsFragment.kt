@@ -21,6 +21,7 @@ import com.ewind.newsapptest.util.ext.startRefresh
 import com.ewind.newsapptest.util.ext.stopRefresh
 import com.ewind.newsapptest.view.component.adapter.CategoryAdapter
 import com.ewind.newsapptest.view.component.adapter.NewsAdapter
+import com.ewind.newsapptest.view.main.news.NewsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),

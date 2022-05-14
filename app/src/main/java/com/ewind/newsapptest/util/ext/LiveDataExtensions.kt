@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.ResourceState
 
-fun <T> MutableLiveData<Resource<T>>.setSuccess(data: T, message: String?) =
+fun <T> MutableLiveData<Resource<T>>.setSuccess(data: T, message: String? = null) =
     postValue(Resource(ResourceState.SUCCESS, data, message))
 
 fun <T> MutableLiveData<Resource<T>>.setLoading() =

@@ -17,6 +17,7 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
     private val compositeDisposable = CompositeDisposable()
     val userLiveData = MutableLiveData<Resource<DUser>>()
     val updateLiveData = MutableLiveData<Resource<String>>()
+    val isLogLiveData = MutableLiveData<Resource<Boolean>>()
 
     fun getUser() {
         userLiveData.setLoading()
@@ -25,10 +26,28 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     { response ->
-                        userLiveData.setSuccess(response, null)
+                        userLiveData.setSuccess(response)
                     },
                     {
                         userLiveData.setError()
+                    })
+        )
+    }
+
+    fun isLogUser() {
+        compositeDisposable.add(
+            profileUserCase.getUser()
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    { response ->
+                        if (response.email != null) {
+                            isLogLiveData.setSuccess(true)
+                        } else {
+                            isLogLiveData.setSuccess(false)
+                        }
+                    },
+                    {
+                        isLogLiveData.setError()
                     })
         )
     }
@@ -39,7 +58,7 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
-                        updateLiveData.setSuccess("Update success.", null)
+                        updateLiveData.setSuccess("Registration successful.")
                     },
                     {
                         updateLiveData.setError(Msg.INTERNAL_ISSUE)

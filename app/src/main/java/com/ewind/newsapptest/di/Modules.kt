@@ -1,5 +1,6 @@
 package com.ewind.newsapptest.di
 
+import com.ewind.newsapi.presentation.main.topnews.TopNewsViewModel
 import com.ewind.newsapptest.data.repository.NewsRepositoryImpl
 import com.ewind.newsapptest.data.repository.PreferenceRepositoryImpl
 import com.ewind.newsapptest.data.repository.ProfileRespositoryImpl
@@ -10,9 +11,8 @@ import com.ewind.newsapptest.domain.usecase.NewsUseCase
 import com.ewind.newsapptest.domain.usecase.PreferenceUseCase
 import com.ewind.newsapptest.domain.usecase.ProfileUserCase
 import com.ewind.newsapptest.view.main.home.HomeViewModel
-import com.ewind.newsapi.presentation.main.news.NewsViewModel
+import com.ewind.newsapptest.view.main.news.NewsViewModel
 import com.ewind.newsapptest.view.main.profile.ProfileViewModel
-import com.ewind.newsapi.presentation.main.topnews.TopNewsViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module

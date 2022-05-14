@@ -1,4 +1,4 @@
-package com.ewind.newsapi.presentation.main.news
+package com.ewind.newsapptest.view.main.news
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

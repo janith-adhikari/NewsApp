@@ -2,7 +2,7 @@ package com.ewind.newsapptest.view.component.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ewind.newsapi.domain.model.Category
+import com.ewind.newsapptest.domain.model.Category
 import com.ewind.newsapptest.R
 import com.ewind.newsapptest.databinding.ItemCategoryBinding
 import com.ewind.newsapptest.util.ext.getCompatColor

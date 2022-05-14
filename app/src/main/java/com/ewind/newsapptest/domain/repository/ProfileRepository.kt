@@ -1,6 +1,6 @@
-package com.ewind.newsapi.domain.repository
+package com.ewind.newsapptest.domain.repository
 
-import com.ewind.newsapi.domain.model.DUser
+import com.ewind.newsapptest.domain.model.DUser
 import io.reactivex.Completable
 import io.reactivex.Observable
 

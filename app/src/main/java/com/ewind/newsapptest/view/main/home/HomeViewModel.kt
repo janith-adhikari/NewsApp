@@ -1,4 +1,4 @@
-package com.ewind.newsapi.presentation.main.home
+package com.ewind.newsapptest.view.main.home
 
 import androidx.lifecycle.ViewModel
 

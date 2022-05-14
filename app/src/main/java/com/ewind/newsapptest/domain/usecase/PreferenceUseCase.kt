@@ -1,7 +1,7 @@
-package com.ewind.newsapi.domain.usecase
+package com.ewind.newsapptest.domain.usecase
 
-import com.ewind.newsapi.domain.model.Category
-import com.ewind.newsapi.domain.repository.PreferenceRepository
+import com.ewind.newsapptest.domain.model.Category
+import com.ewind.newsapptest.domain.repository.PreferenceRepository
 import io.reactivex.Observable
 
 class PreferenceUseCase(val preferenceRepository: PreferenceRepository) {

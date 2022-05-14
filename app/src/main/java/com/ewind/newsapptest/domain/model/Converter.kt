@@ -1,4 +1,4 @@
-package com.ewind.newsapi.domain.model
+package com.ewind.newsapptest.domain.model
 
 import com.ewind.newsapptest.data.source.local.model.PreferencesDB
 import com.ewind.newsapptest.data.source.local.model.UserDB

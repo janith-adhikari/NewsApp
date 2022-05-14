@@ -1,4 +1,4 @@
-package com.ewind.newsapi.domain.model
+package com.ewind.newsapptest.domain.model
 
 data class Category(
     val key: String?,

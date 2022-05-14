@@ -1,6 +1,6 @@
-package com.ewind.newsapi.domain.repository
+package com.ewind.newsapptest.domain.repository
 
-import com.ewind.newsapi.domain.model.Category
+import com.ewind.newsapptest.domain.model.Category
 import io.reactivex.Observable
 
 interface PreferenceRepository {

@@ -2,10 +2,10 @@ package com.ewind.newsapi.presentation.main.news
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ewind.newsapi.domain.model.Category
-import com.ewind.newsapi.domain.model.DArticles
-import com.ewind.newsapi.domain.usecase.NewsUseCase
-import com.ewind.newsapi.domain.usecase.PreferenceUseCase
+import com.ewind.newsapptest.domain.model.Category
+import com.ewind.newsapptest.domain.model.DArticles
+import com.ewind.newsapptest.domain.usecase.NewsUseCase
+import com.ewind.newsapptest.domain.usecase.PreferenceUseCase
 import com.ewind.newsapptest.util.Constant
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.TempVar

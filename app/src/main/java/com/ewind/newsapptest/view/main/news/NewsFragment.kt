@@ -5,8 +5,8 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ewind.newsapi.domain.model.Category
-import com.ewind.newsapi.domain.model.DArticles
+import com.ewind.newsapptest.domain.model.Category
+import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapi.presentation.main.base.BaseFragment
 import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
 import com.ewind.newsapptest.view.main.newsview.NewsViewActivity

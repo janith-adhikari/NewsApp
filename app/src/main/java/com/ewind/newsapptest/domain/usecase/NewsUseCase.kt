@@ -1,7 +1,7 @@
-package com.ewind.newsapi.domain.usecase
+package com.ewind.newsapptest.domain.usecase
 
-import com.ewind.newsapi.domain.model.DResponse
-import com.ewind.newsapi.domain.repository.NewsRepository
+import com.ewind.newsapptest.domain.model.DResponse
+import com.ewind.newsapptest.domain.repository.NewsRepository
 import io.reactivex.Observable
 
 class NewsUseCase(

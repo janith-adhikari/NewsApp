@@ -1,4 +1,5 @@
-package com.ewind.newsapi.presentation.main.topnews
+/*
+package com.ewind.newsapptest.view.main.topnews
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,9 +9,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ewind.newsapptest.util.ext.showToast
 import com.ewind.newsapi.R
-import com.ewind.newsapi.domain.model.DArticles
+import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.view.component.adapter.NewsAdapter
 import com.ewind.newsapi.presentation.main.base.BaseFragment
+import com.ewind.newsapi.presentation.main.topnews.TopNewsViewModel
 import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
 import com.ewind.newsapptest.view.main.newsview.NewsViewActivity
 import com.ewind.newsapptest.util.Msg
@@ -116,4 +118,4 @@ class TopNewsFragment : BaseFragment(), NewsAdapter.AdapterListener {
             putExtra(EXTRA_NEWS, news)
         }
     }
-}
+}*/

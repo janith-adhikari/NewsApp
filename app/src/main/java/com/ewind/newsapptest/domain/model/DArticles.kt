@@ -1,4 +1,4 @@
-package com.ewind.newsapi.domain.model
+package com.ewind.newsapptest.domain.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

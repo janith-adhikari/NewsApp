@@ -1,3 +1,4 @@
+/*
 package com.ewind.newsapi.presentation.main.profile
 
 import android.app.Activity
@@ -8,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import com.ewind.newsapi.R
-import com.ewind.newsapi.domain.model.DUser
+import com.ewind.newsapptest.domain.model.DUser
 import com.ewind.newsapi.presentation.main.base.BaseFragment
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.ResourceState
@@ -69,4 +70,4 @@ class ProfileFragment : BaseFragment() {
             }
         }
     }
-}
+}*/

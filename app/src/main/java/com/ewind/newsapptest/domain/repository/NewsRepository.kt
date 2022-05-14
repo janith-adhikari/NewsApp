@@ -1,6 +1,6 @@
-package com.ewind.newsapi.domain.repository
+package com.ewind.newsapptest.domain.repository
 
-import com.ewind.newsapi.domain.model.DResponse
+import com.ewind.newsapptest.domain.model.DResponse
 import io.reactivex.Observable
 
 interface NewsRepository {

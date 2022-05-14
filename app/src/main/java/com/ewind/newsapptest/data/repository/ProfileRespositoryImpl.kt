@@ -1,10 +1,10 @@
 package com.ewind.newsapptest.data.repository
 
 import com.ewind.newsapptest.data.source.local.database.DatabaseClient
-import com.ewind.newsapi.domain.model.DUser
-import com.ewind.newsapi.domain.model.toDBModel
-import com.ewind.newsapi.domain.model.toViewModel
-import com.ewind.newsapi.domain.repository.ProfileRepository
+import com.ewind.newsapptest.domain.model.DUser
+import com.ewind.newsapptest.domain.model.toDBModel
+import com.ewind.newsapptest.domain.model.toViewModel
+import com.ewind.newsapptest.domain.repository.ProfileRepository
 import io.reactivex.Observable
 
 class ProfileRespositoryImpl(val databaseClient: DatabaseClient) : ProfileRepository {

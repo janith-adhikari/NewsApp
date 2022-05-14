@@ -1,9 +1,9 @@
-package com.ewind.newsapi.presentation.main.profile
+package com.ewind.newsapptest.view.main.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ewind.newsapi.domain.model.DUser
-import com.ewind.newsapi.domain.usecase.ProfileUserCase
+import com.ewind.newsapptest.domain.model.DUser
+import com.ewind.newsapptest.domain.usecase.ProfileUserCase
 import com.ewind.newsapptest.util.Msg
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.ext.setError

@@ -1,9 +1,9 @@
 package com.ewind.newsapptest.data.repository
 
 import com.ewind.newsapptest.data.source.local.database.DatabaseClient
-import com.ewind.newsapi.domain.model.Category
-import com.ewind.newsapi.domain.model.toViewModel
-import com.ewind.newsapi.domain.repository.PreferenceRepository
+import com.ewind.newsapptest.domain.model.Category
+import com.ewind.newsapptest.domain.model.toViewModel
+import com.ewind.newsapptest.domain.repository.PreferenceRepository
 import io.reactivex.Observable
 
 class PreferenceRepositoryImpl(private val databaseClient: DatabaseClient) : PreferenceRepository {

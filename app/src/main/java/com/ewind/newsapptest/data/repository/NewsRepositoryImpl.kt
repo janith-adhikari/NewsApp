@@ -1,9 +1,9 @@
 package com.ewind.newsapptest.data.repository
 
 import com.ewind.newsapptest.data.source.remote.apis.NewsApi
-import com.ewind.newsapi.domain.model.DResponse
-import com.ewind.newsapi.domain.model.toViewModel
-import com.ewind.newsapi.domain.repository.NewsRepository
+import com.ewind.newsapptest.domain.model.DResponse
+import com.ewind.newsapptest.domain.model.toViewModel
+import com.ewind.newsapptest.domain.repository.NewsRepository
 import io.reactivex.Observable
 
 class NewsRepositoryImpl(val newsApi: NewsApi) : NewsRepository {

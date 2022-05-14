@@ -1,7 +1,7 @@
-package com.ewind.newsapi.domain.usecase
+package com.ewind.newsapptest.domain.usecase
 
-import com.ewind.newsapi.domain.model.DUser
-import com.ewind.newsapi.domain.repository.ProfileRepository
+import com.ewind.newsapptest.domain.model.DUser
+import com.ewind.newsapptest.domain.repository.ProfileRepository
 import io.reactivex.Completable
 import io.reactivex.Observable
 

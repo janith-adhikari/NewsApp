@@ -1,7 +1,7 @@
 package com.ewind.newsapptest.view.main.newsview
 
 import android.os.Bundle
-import com.ewind.newsapi.domain.model.DArticles
+import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.databinding.ActivityNewsDetailsBinding
 import com.ewind.newsapptest.util.ext.*
 import com.ewind.newsapptest.view.main.base.BaseActivity

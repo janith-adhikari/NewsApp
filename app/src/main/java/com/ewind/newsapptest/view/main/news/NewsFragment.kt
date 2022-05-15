@@ -3,15 +3,12 @@ package com.ewind.newsapptest.view.main.news
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ewind.newsapptest.domain.model.Category
-import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapi.presentation.main.base.BaseFragment
-import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
-import com.ewind.newsapptest.view.main.newsview.NewsDetailsActivity
 import com.ewind.newsapptest.R
 import com.ewind.newsapptest.databinding.FragmentNewsBinding
+import com.ewind.newsapptest.domain.model.Category
+import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.util.PaginationScrollListener
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.ResourceState
@@ -19,21 +16,29 @@ import com.ewind.newsapptest.util.ext.isOnline
 import com.ewind.newsapptest.util.ext.startActivity
 import com.ewind.newsapptest.util.ext.startRefresh
 import com.ewind.newsapptest.util.ext.stopRefresh
+import com.ewind.newsapptest.view.component.adapter.BreakingNewsAdapter
 import com.ewind.newsapptest.view.component.adapter.CategoryAdapter
 import com.ewind.newsapptest.view.component.adapter.NewsAdapter
+import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
+import com.ewind.newsapptest.view.main.newsview.NewsDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
-    CategoryAdapter.AdapterListener, NewsAdapter.AdapterListener {
+    CategoryAdapter.AdapterListener, NewsAdapter.AdapterListener,
+    BreakingNewsAdapter.AdapterListener {
 
     private val newsViewModel by viewModel<NewsViewModel>()
+    private val breakingNewsViewModel by viewModel<BreakingNewsViewModel>()
+
     private lateinit var adapterPref: CategoryAdapter
     private lateinit var newsAdapter: NewsAdapter
+    private lateinit var breakingNewsAdapter: BreakingNewsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        newsViewModel.newsliveDate.observe(this, Observer { updateView(it) })
-        newsViewModel.livedataPre.observe(this, Observer { populate(it) })
+        newsViewModel.newsliveDate.observe(this) { updateView(it) }
+        newsViewModel.livedataPre.observe(this) { populate(it) }
+        breakingNewsViewModel.newsliveDate.observe(this) { updateBreakingView(it) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -65,7 +70,29 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
             override fun isLoading(): Boolean {
                 return newsViewModel.isLoading
             }
+        })
 
+        breakingNewsAdapter = BreakingNewsAdapter(mutableListOf())
+        breakingNewsAdapter.listener = this
+        binding.rvBreakingNews.adapter = breakingNewsAdapter
+        binding.rvBreakingNews.addOnScrollListener(object :
+            PaginationScrollListener(binding.rvBreakingNews.layoutManager as LinearLayoutManager) {
+            override fun loadMoreItems() {
+                breakingNewsViewModel.currentPage++
+                getBreakingNews()
+            }
+
+            override fun isLastPage(): Boolean {
+                return if (breakingNewsViewModel.totalCount != null) {
+                    newsAdapter.itemCount >= breakingNewsViewModel.totalCount!!
+                } else {
+                    false
+                }
+            }
+
+            override fun isLoading(): Boolean {
+                return breakingNewsViewModel.isLoading
+            }
         })
 
         binding.pullRefresh.setOnRefreshListener {
@@ -73,6 +100,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
             getNews()
         }
 
+        getBreakingNews()
         getNews()
         newsViewModel.preferenceAll()
     }
@@ -80,6 +108,12 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
     private fun getNews() {
         context?.isOnline {
             newsViewModel.getNews()
+        }
+    }
+
+    private fun getBreakingNews() {
+        context?.isOnline {
+            breakingNewsViewModel.getTopNews()
         }
     }
 
@@ -102,6 +136,23 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
                 }
                 ResourceState.ERROR -> {
                     binding.pullRefresh.stopRefresh()
+                    Toast.makeText(context, it.message.toString(), Toast.LENGTH_LONG).show()
+                }
+            }
+        }
+    }
+
+    private fun updateBreakingView(resource: Resource<MutableList<DArticles>>?) {
+        resource?.let {
+            when (it.state) {
+                ResourceState.LOADING -> {
+                }
+                ResourceState.SUCCESS -> {
+                    it.data?.let { it1 ->
+                        breakingNewsAdapter.addNews(it1)
+                    }
+                }
+                ResourceState.ERROR -> {
                     Toast.makeText(context, it.message.toString(), Toast.LENGTH_LONG).show()
                 }
             }

@@ -12,7 +12,7 @@ import com.ewind.newsapi.R
 import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.view.component.adapter.NewsAdapter
 import com.ewind.newsapi.presentation.main.base.BaseFragment
-import com.ewind.newsapi.presentation.main.topnews.TopNewsViewModel
+import com.ewind.newsapptest.view.main.news.TopNewsViewModel
 import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
 import com.ewind.newsapptest.view.main.newsview.NewsViewActivity
 import com.ewind.newsapptest.util.Msg

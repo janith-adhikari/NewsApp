@@ -1,6 +1,5 @@
 package com.ewind.newsapptest.di
 
-import com.ewind.newsapi.presentation.main.topnews.TopNewsViewModel
 import com.ewind.newsapptest.data.repository.NewsRepositoryImpl
 import com.ewind.newsapptest.data.repository.PreferenceRepositoryImpl
 import com.ewind.newsapptest.data.repository.ProfileRepositoryImpl
@@ -11,6 +10,7 @@ import com.ewind.newsapptest.domain.usecase.NewsUseCase
 import com.ewind.newsapptest.domain.usecase.PreferenceUseCase
 import com.ewind.newsapptest.domain.usecase.ProfileUserCase
 import com.ewind.newsapptest.view.main.home.HomeViewModel
+import com.ewind.newsapptest.view.main.news.BreakingNewsViewModel
 import com.ewind.newsapptest.view.main.news.NewsViewModel
 import com.ewind.newsapptest.view.main.profile.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -34,7 +34,7 @@ val viewModelModule: Module = module {
     viewModel { HomeViewModel() }
     viewModel { NewsViewModel(newsUseCase = get(), preferenceUseCase = get()) }
     viewModel { ProfileViewModel(profileUserCase = get()) }
-    viewModel { TopNewsViewModel(topNewsUseCase = get()) }
+    viewModel { BreakingNewsViewModel(topNewsUseCase = get()) }
 }
 
 val useCaseModule: Module = module {

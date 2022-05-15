@@ -1,27 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/coordinatorLayoutRestaurant"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:visibility="visible">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_category"
-        android:layout_width="0dp"
-        android:layout_height="?actionBarSize"
-        android:orientation="horizontal"
-        android:splitMotionEvents="false"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_category" />
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayoutRestaurant"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.MaterialComponents.ActionBar">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayoutRestaurant"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/white"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/lToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="62dp"
+                android:background="@color/white"
+                app:layout_collapseMode="parallax">
+
+                <EditText
+                    android:id="@+id/etSearchDish"
+                    style="@style/NunitoTextStyle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginRight="16dp"
+                    android:background="@drawable/bg_round_corner_stroke"
+                    android:elevation="5dp"
+                    android:hint="Search"
+                    android:paddingLeft="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingRight="12dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="14sp"
+                    android:visibility="visible"
+                    app:layout_collapseMode="pin"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_breaking_news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:splitMotionEvents="false"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_collapseMode="parallax"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/etSearchDish"
+                    tools:listitem="@layout/item_breaking_news" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarRestaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@color/white"
+                app:contentInsetStart="0dp"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways">
+
+                <LinearLayout
+                    android:id="@+id/llRestCate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:background="@color/white"
+                    android:orientation="horizontal"
+                    android:visibility="visible"
+                    app:layout_collapseMode="pin"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/rv_breaking_news">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="?actionBarSize"
+                        android:background="@color/white"
+                        android:orientation="horizontal"
+                        android:splitMotionEvents="false"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_collapseMode="pin"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/rv_breaking_news"
+                        tools:listitem="@layout/item_category" />
+
+                </LinearLayout>
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/pull_refresh"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -38,4 +137,4 @@
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,4 +1,4 @@
-package com.ewind.newsapi.presentation.main.topnews
+package com.ewind.newsapptest.view.main.news
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -14,7 +14,7 @@ import com.ewind.newsapptest.util.network.ErrorHandler
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class TopNewsViewModel(val topNewsUseCase: NewsUseCase) : ViewModel() {
+class BreakingNewsViewModel(val topNewsUseCase: NewsUseCase) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     val newsliveDate = MutableLiveData<Resource<MutableList<DArticles>>>()

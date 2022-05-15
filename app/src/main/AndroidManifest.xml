@@ -16,7 +16,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".view.main.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity
             android:name=".view.main.splash.SplashActivity"
             android:exported="true"
@@ -30,7 +31,8 @@
 
         <activity
             android:name=".view.main.home.HomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
             android:name=".view.main.newsview.NewsDetailsActivity"

@@ -29,7 +29,7 @@
                 app:layout_collapseMode="parallax">
 
                 <EditText
-                    android:id="@+id/etSearchDish"
+                    android:id="@+id/etSearch"
                     style="@style/NunitoTextStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -39,6 +39,10 @@
                     android:background="@drawable/bg_round_corner_stroke"
                     android:elevation="5dp"
                     android:hint="Search"
+                    android:imeOptions="actionSearch"
+                    android:inputType="textCapSentences"
+                    android:lines="1"
+                    android:maxLines="1"
                     android:paddingLeft="12dp"
                     android:paddingTop="8dp"
                     android:paddingRight="12dp"
@@ -46,9 +50,35 @@
                     android:textSize="14sp"
                     android:visibility="visible"
                     app:layout_collapseMode="pin"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/btnFilter"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/btnFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/bg_round_corner_stroke"
+                    android:elevation="5dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_global"
+                    app:layout_constraintBottom_toBottomOf="@+id/etSearch"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/etSearch" />
+
+                <ImageButton
+                    android:id="@+id/cancelSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:elevation="8dp"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_close"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="@id/etSearch"
+                    app:layout_constraintEnd_toEndOf="@id/etSearch"
+                    app:layout_constraintTop_toTopOf="@id/etSearch" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_breaking_news"
@@ -63,7 +93,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etSearchDish"
+                    app:layout_constraintTop_toBottomOf="@+id/etSearch"
                     tools:listitem="@layout/item_breaking_news" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -7,7 +7,19 @@ import io.reactivex.Observable
 class NewsUseCase(
     val newsRepository: NewsRepository
 ) {
-    fun getTopNews(page: Int, country: String) = newsRepository.getTopNews(page, country)
-    fun getNews(keyword: String?, page: Int): Observable<DResponse> =
-        newsRepository.getNews(keyword, page)
+    fun getTopNews(
+        page: Int,
+        country: String,
+        category: String,
+        language: String
+    ) =
+        newsRepository.getTopNews(page, country, category, language)
+
+    fun getNews(
+        keyword: String?,
+        country: String,
+        language: String,
+        page: Int
+    ): Observable<DResponse> =
+        newsRepository.getNews(keyword, country, language, page)
 }

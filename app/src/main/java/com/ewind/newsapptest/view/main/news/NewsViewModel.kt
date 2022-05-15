@@ -30,10 +30,13 @@ class NewsViewModel(
     var totalCount: Int? = null
     var keyword: String = "all"
 
+    var country: String = "us"
+    var lang: String = "en"
+
     fun getNews() {
         newsliveDate.setLoading()
         compositeDisposable.add(
-            newsUseCase.getNews(keyword, currentPage)
+            newsUseCase.getNews(keyword, country, lang, currentPage)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe {
                     isLoading = true
@@ -69,6 +72,11 @@ class NewsViewModel(
 
                     })
         )
+    }
+
+    fun setGlob(country: String, lang: String) {
+        this.country = country
+        this.lang = lang
     }
 
     override fun onCleared() {

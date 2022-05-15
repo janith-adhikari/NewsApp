@@ -18,6 +18,6 @@ interface UserDao {
     abstract fun insertUser(userDB: UserDB): Completable
 
     @Query("DELETE FROM userdb")
-    abstract fun delete()
+    abstract fun delete(): Completable
 
 }

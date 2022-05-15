@@ -66,6 +66,20 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
         )
     }
 
+    fun deleteUser() {
+        compositeDisposable.add(
+            profileUserCase.deleteUser()
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                    {
+                        updateLiveData.setSuccess("Sign Out")
+                    },
+                    {
+                        updateLiveData.setError(Msg.INTERNAL_ISSUE)
+                    })
+        )
+    }
+
     override fun onCleared() {
         compositeDisposable.dispose()
         super.onCleared()

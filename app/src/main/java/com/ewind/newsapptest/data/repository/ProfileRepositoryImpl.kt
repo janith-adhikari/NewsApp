@@ -5,6 +5,7 @@ import com.ewind.newsapptest.domain.model.DUser
 import com.ewind.newsapptest.domain.model.toDBModel
 import com.ewind.newsapptest.domain.model.toViewModel
 import com.ewind.newsapptest.domain.repository.ProfileRepository
+import io.reactivex.Completable
 import io.reactivex.Observable
 
 class ProfileRepositoryImpl(val databaseClient: DatabaseClient) : ProfileRepository {
@@ -15,4 +16,7 @@ class ProfileRepositoryImpl(val databaseClient: DatabaseClient) : ProfileReposit
 
     override fun saveUser(user: DUser) =
         databaseClient.appDatabases().userDao().insertUser(user.toDBModel())
+
+    override fun deleteUser(): Completable =
+        databaseClient.appDatabases().userDao().delete()
 }

@@ -13,12 +13,15 @@ interface NewsApi {
     fun getTopNews(
         @Query(QueryConst.PAGE) page: Int,
         @Query(QueryConst.PAGE_SIZE) pageSize: Int = Constant.PER_PAGE,
-        @Query(QueryConst.COUNTRY) country: String? = "us"
+        @Query(QueryConst.COUNTRY) country: String? = "us",
+        @Query(QueryConst.LANGUAGE) language: String? = "en",
+        @Query(QueryConst.CATEGORY) category: String = "general"
     ): Observable<Response>
 
     @GET("everything")
     fun getNews(
         @Query(QueryConst.Q) keyword: String? = null,
+        @Query(QueryConst.LANGUAGE) language: String? = "en",
         @Query(QueryConst.PAGE) page: Int,
         @Query(QueryConst.PAGE_SIZE) pageSize: Int = Constant.PER_PAGE
     ): Observable<Response>

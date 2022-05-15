@@ -7,4 +7,5 @@ import io.reactivex.Observable
 interface ProfileRepository {
     fun getUser(): Observable<DUser>
     fun saveUser(user: DUser): Completable
+    fun deleteUser(): Completable
 }

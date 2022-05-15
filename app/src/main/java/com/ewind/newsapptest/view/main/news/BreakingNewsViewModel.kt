@@ -22,10 +22,14 @@ class BreakingNewsViewModel(val topNewsUseCase: NewsUseCase) : ViewModel() {
     var currentPage: Int = 1
     var totalCount: Int? = null
 
+    var category: String = "general"
+    var country: String = "us"
+    var lang: String = "en"
+
     fun getTopNews() {
         newsliveDate.setLoading()
         compositeDisposable.add(
-            topNewsUseCase.getTopNews(currentPage, "us")
+            topNewsUseCase.getTopNews(currentPage, country, category, lang)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe {
                     isLoading = true
@@ -51,5 +55,10 @@ class BreakingNewsViewModel(val topNewsUseCase: NewsUseCase) : ViewModel() {
     override fun onCleared() {
         compositeDisposable.dispose()
         super.onCleared()
+    }
+
+    fun setGlob(country: String, lang: String) {
+        this.country = country
+        this.lang = lang
     }
 }

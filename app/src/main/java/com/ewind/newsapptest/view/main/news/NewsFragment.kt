@@ -2,6 +2,8 @@ package com.ewind.newsapptest.view.main.news
 
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView.OnEditorActionListener
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ewind.newsapi.presentation.main.base.BaseFragment
@@ -12,16 +14,15 @@ import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.util.PaginationScrollListener
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.ResourceState
-import com.ewind.newsapptest.util.ext.isOnline
-import com.ewind.newsapptest.util.ext.startActivity
-import com.ewind.newsapptest.util.ext.startRefresh
-import com.ewind.newsapptest.util.ext.stopRefresh
+import com.ewind.newsapptest.util.ext.*
 import com.ewind.newsapptest.view.component.adapter.BreakingNewsAdapter
 import com.ewind.newsapptest.view.component.adapter.CategoryAdapter
 import com.ewind.newsapptest.view.component.adapter.NewsAdapter
+import com.ewind.newsapptest.view.component.dialog.showFilter
 import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
 import com.ewind.newsapptest.view.main.newsview.NewsDetailsActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
     CategoryAdapter.AdapterListener, NewsAdapter.AdapterListener,
@@ -49,6 +50,53 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
         adapterPref.listener = this
         binding.rvCategory.adapter = adapterPref
 
+        initRecyclerView()
+        initSearchEditText()
+
+        binding.pullRefresh.setOnRefreshListener {
+            refreshData()
+            getNews()
+        }
+        binding.btnFilter.setOnClickListener {
+            requireActivity().showFilter(
+                breakingNewsViewModel.country,
+                breakingNewsViewModel.lang
+            ) { country, lang ->
+                breakingNewsViewModel.setGlob(country, lang)
+                newsViewModel.setGlob(country, lang)
+                refreshBrekingData()
+                refreshData()
+                getBreakingNews()
+                getNews()
+            }
+        }
+
+        getBreakingNews()
+        getNews()
+        newsViewModel.preferenceAll()
+    }
+
+    private fun initSearchEditText() {
+        binding.cancelSearch.setOnClickListener {
+            binding.cancelSearch.gone()
+            binding.etSearch.text.clear()
+            refreshData()
+            newsViewModel.keyword = "all"
+            newsViewModel.getNews()
+
+        }
+        binding.etSearch.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                binding.appbarLayoutRestaurant.setExpanded(false)
+                v.hideKeyboard()
+                performSearch()
+                return@OnEditorActionListener true
+            }
+            false
+        })
+    }
+
+    private fun initRecyclerView() {
         newsAdapter = NewsAdapter(mutableListOf())
         newsAdapter.listener = this
         binding.rvTopNews.adapter = newsAdapter
@@ -94,15 +142,6 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
                 return breakingNewsViewModel.isLoading
             }
         })
-
-        binding.pullRefresh.setOnRefreshListener {
-            refreshData()
-            getNews()
-        }
-
-        getBreakingNews()
-        getNews()
-        newsViewModel.preferenceAll()
     }
 
     private fun getNews() {
@@ -117,9 +156,21 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
         }
     }
 
+    private fun performSearch() {
+        refreshData()
+        newsViewModel.keyword = binding.etSearch.text.toString()
+        newsViewModel.getNews()
+        binding.cancelSearch.visible()
+    }
+
     private fun refreshData() {
         newsViewModel.currentPage = 1
         newsAdapter.clearDate()
+    }
+
+    private fun refreshBrekingData() {
+        breakingNewsViewModel.currentPage = 1
+        breakingNewsAdapter.clearDate()
     }
 
     private fun updateView(resource: Resource<MutableList<DArticles>>?) {
@@ -181,10 +232,13 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
 
     override fun onCategorySelected(category: Category) {
         refreshData()
+        refreshBrekingData()
         category.key?.let {
             newsViewModel.keyword = category.key
+            breakingNewsViewModel.category = if (category.key == "all") "general" else category.key
         }
         getNews()
+        getBreakingNews()
     }
 
     override fun onNewsSelected(news: DArticles) {

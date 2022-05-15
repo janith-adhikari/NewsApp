@@ -11,7 +11,7 @@ fun String.isValidPhone(): Boolean = this.isNotEmpty() &&
 fun String.isValidPassword(): Boolean {
     var valid: Boolean
     try {
-        valid = this.length >= 6
+        valid = this.length > 8
     } catch (e: Exception) {
         valid = false
         e.printStackTrace()

@@ -11,4 +11,5 @@
     <string name="title_favorite">Favorite</string>
     <string name="title_profile">Profile</string>
     <string name="sign_out">Sign Out</string>
+    <string name="apply">Apply</string>
 </resources>

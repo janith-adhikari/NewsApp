@@ -8,4 +8,5 @@ import io.reactivex.Observable
 class ProfileUserCase(val profileRepository: ProfileRepository) {
     fun getUser(): Observable<DUser> = profileRepository.getUser()
     fun saveUser(user: DUser): Completable = profileRepository.saveUser(user)
+    fun deleteUser(): Completable = profileRepository.deleteUser()
 }

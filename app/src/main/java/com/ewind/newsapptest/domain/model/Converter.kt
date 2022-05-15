@@ -25,9 +25,9 @@ fun Category.toDBModel(): PreferencesDB = PreferencesDB(
 )
 
 fun UserDB.toViewModel(): DUser = DUser(
-    name
+    name, email
 )
 
 fun DUser.toDBModel(): UserDB = UserDB(
-    name
+    name, email
 )

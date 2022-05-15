@@ -7,7 +7,7 @@ import com.ewind.newsapptest.domain.model.toViewModel
 import com.ewind.newsapptest.domain.repository.ProfileRepository
 import io.reactivex.Observable
 
-class ProfileRespositoryImpl(val databaseClient: DatabaseClient) : ProfileRepository {
+class ProfileRepositoryImpl(val databaseClient: DatabaseClient) : ProfileRepository {
     override fun getUser(): Observable<DUser> =
         databaseClient.appDatabases().userDao().getAll().map {
             it.firstOrNull()?.toViewModel()

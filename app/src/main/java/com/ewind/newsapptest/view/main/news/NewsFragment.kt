@@ -9,7 +9,7 @@ import com.ewind.newsapptest.domain.model.Category
 import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapi.presentation.main.base.BaseFragment
 import com.ewind.newsapptest.view.main.newsview.EXTRA_NEWS
-import com.ewind.newsapptest.view.main.newsview.NewsViewActivity
+import com.ewind.newsapptest.view.main.newsview.NewsDetailsActivity
 import com.ewind.newsapptest.R
 import com.ewind.newsapptest.databinding.FragmentNewsBinding
 import com.ewind.newsapptest.util.PaginationScrollListener
@@ -137,7 +137,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
     }
 
     override fun onNewsSelected(news: DArticles) {
-        context?.startActivity<NewsViewActivity> {
+        context?.startActivity<NewsDetailsActivity> {
             putExtra(EXTRA_NEWS, news)
         }
     }

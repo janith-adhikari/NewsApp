@@ -32,6 +32,10 @@
             android:name=".view.main.home.HomeActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".view.main.newsview.NewsDetailsActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

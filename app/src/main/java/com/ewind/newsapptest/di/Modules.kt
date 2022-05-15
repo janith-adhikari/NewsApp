@@ -3,7 +3,7 @@ package com.ewind.newsapptest.di
 import com.ewind.newsapi.presentation.main.topnews.TopNewsViewModel
 import com.ewind.newsapptest.data.repository.NewsRepositoryImpl
 import com.ewind.newsapptest.data.repository.PreferenceRepositoryImpl
-import com.ewind.newsapptest.data.repository.ProfileRespositoryImpl
+import com.ewind.newsapptest.data.repository.ProfileRepositoryImpl
 import com.ewind.newsapptest.domain.repository.NewsRepository
 import com.ewind.newsapptest.domain.repository.PreferenceRepository
 import com.ewind.newsapptest.domain.repository.ProfileRepository
@@ -55,7 +55,7 @@ val repositoryModule: Module = module {
         )
     }
     single<ProfileRepository> {
-        ProfileRespositoryImpl(
+        ProfileRepositoryImpl(
             databaseClient = get()
         )
     }

@@ -1,31 +1,42 @@
 package com.ewind.newsapptest.view.main.newsview
 
 import android.os.Bundle
-import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.databinding.ActivityNewsDetailsBinding
+import com.ewind.newsapptest.domain.model.DArticles
 import com.ewind.newsapptest.util.ext.*
 import com.ewind.newsapptest.view.main.base.BaseActivity
 
 const val EXTRA_NEWS = "extra_news"
 
-class NewsViewActivity : BaseActivity() {
+class NewsDetailsActivity : BaseActivity() {
 
     lateinit var binding: ActivityNewsDetailsBinding
     private var url: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        supportActionBar?.apply {
-            this.setDisplayHomeAsUpEnabled(true)
-            this.setDisplayShowHomeEnabled(true)
-            //this.setHomeAsUpIndicator(R.drawable.ic_back)
-        }
+        binding = ActivityNewsDetailsBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
         val news = intent?.extras?.getParcelable<DArticles>(EXTRA_NEWS)
         news?.let {
             setData(it)
         }
+        
+        binding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.blurLayout.startBlur()
+    }
+
+    override fun onStop() {
+        binding.blurLayout.pauseBlur()
+        super.onStop()
     }
 
     private fun setData(news: DArticles) {

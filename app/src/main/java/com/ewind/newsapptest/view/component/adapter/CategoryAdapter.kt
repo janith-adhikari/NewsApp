@@ -32,7 +32,7 @@ class CategoryAdapter(val categoryList: MutableList<Category>) :
                 view.tvCategory.backgroundTintList =
                     itemView.context.getCompatColorState(R.color.red)
             } else {
-                view.tvCategory.setTextColor(itemView.context.getCompatColor(R.color.white))
+                view.tvCategory.setTextColor(itemView.context.getCompatColor(R.color.black))
                 view.tvCategory.backgroundTintList =
                     itemView.context.getCompatColorState(R.color.white)
             }

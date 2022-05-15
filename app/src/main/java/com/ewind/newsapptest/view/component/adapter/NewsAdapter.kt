@@ -30,7 +30,7 @@ class NewsAdapter(val newsList: MutableList<DArticles>) :
 
             val news = newsList[position]
 
-            view.ivNewsImage.loadImageCenterCrop(news.urlToImage)
+            view.ivNewsImage.loadImageCornerRound(news.urlToImage,32)
             view.tvNewsAuthor.text = news.source?.name
             view.tvNewsTitle.text = news.title
             news.publishedAt?.let {

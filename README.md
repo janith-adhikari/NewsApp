@@ -1,9 +1,9 @@
 # News app
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/img/home.png?raw=true)
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/img/home_scrolled.png?raw=true)
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/img/filter.png?raw=true)
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/img/details.png?raw=true)
+![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png?raw=true)
+![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png?raw=true)
+![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/filter.png?raw=true)
+![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/details.png?raw=true)
 
 ### Major technologies
 - Language: Kotlin

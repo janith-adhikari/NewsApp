@@ -1,4 +1,4 @@
-# News app
+# News App
 
 ![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png?raw=true)
 ![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png?raw=true)

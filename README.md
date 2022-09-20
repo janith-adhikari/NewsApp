@@ -8,9 +8,9 @@
 - Network: Retrofit, RxJava, okHttp
 
 <p align="center">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png" width="250">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png" width="250">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/filter.png" width="250">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png?raw=true" width="250">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png?raw=true" width="250">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/filter.png?raw=true" width="250">
 </p>
 <br>
 <p align="center">

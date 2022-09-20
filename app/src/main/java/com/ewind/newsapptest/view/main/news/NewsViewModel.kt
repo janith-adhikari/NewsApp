@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ewind.newsapptest.domain.model.Category
 import com.ewind.newsapptest.domain.model.DArticles
-import com.ewind.newsapptest.domain.usecase.NewsUseCase
-import com.ewind.newsapptest.domain.usecase.PreferenceUseCase
+import com.ewind.newsapptest.domain.repository.NewsRepository
+import com.ewind.newsapptest.domain.repository.PreferenceRepository
 import com.ewind.newsapptest.util.Constant
 import com.ewind.newsapptest.util.Resource
 import com.ewind.newsapptest.util.TempVar
@@ -17,14 +17,14 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class NewsViewModel(
-    private val newsUseCase: NewsUseCase,
-    private val preferenceUseCase: PreferenceUseCase
-) :
-    ViewModel() {
+    private val newsRepository: NewsRepository,
+    private val preferenceRepository: PreferenceRepository
+) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
-    val newsliveDate = MutableLiveData<Resource<MutableList<DArticles>>>()
+    val newsLiveDate = MutableLiveData<Resource<MutableList<DArticles>>>()
     val livedataPre = MutableLiveData<Resource<List<Category>>>()
+
     var isLoading = false
     var currentPage: Int = 1
     var totalCount: Int? = null
@@ -34,9 +34,9 @@ class NewsViewModel(
     var lang: String = "en"
 
     fun getNews() {
-        newsliveDate.setLoading()
+        newsLiveDate.setLoading()
         compositeDisposable.add(
-            newsUseCase.getNews(keyword, country, lang, currentPage)
+            newsRepository.getNews(keyword, country, lang, currentPage)
                 .subscribeOn(Schedulers.io())
                 .doOnSubscribe {
                     isLoading = true
@@ -50,19 +50,19 @@ class NewsViewModel(
                         val listWork = response.articles
                         if (!listWork.isNullOrEmpty()) {
                             TempVar.per_page = Constant.PER_PAGE
-                            newsliveDate.setSuccess(listWork.toMutableList(), null)
+                            newsLiveDate.setSuccess(listWork.toMutableList(), null)
                         }
                     },
                     {
-                        newsliveDate.setError(ErrorHandler.getApiErrorMessage(it))
+                        newsLiveDate.setError(ErrorHandler.getApiErrorMessage(it))
                     })
         )
     }
 
     fun preferenceAll() {
         compositeDisposable.add(
-            preferenceUseCase
-                .getPreferenceAll()
+            preferenceRepository
+                .getAllPref()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {

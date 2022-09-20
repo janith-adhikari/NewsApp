@@ -37,7 +37,7 @@ class NewsFragment : BaseFragment<FragmentNewsBinding>(R.layout.fragment_news),
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        newsViewModel.newsliveDate.observe(this) { updateView(it) }
+        newsViewModel.newsLiveDate.observe(this) { updateView(it) }
         newsViewModel.livedataPre.observe(this) { populate(it) }
         breakingNewsViewModel.newsliveDate.observe(this) { updateBreakingView(it) }
     }

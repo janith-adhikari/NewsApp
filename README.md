@@ -1,35 +1,28 @@
-# News App
+# Android MVVM Architecture: News App
 
-![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png?raw=true)
-![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png?raw=true)
-![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/filter.png?raw=true)
-![alt text](https://github.com/devinda-ewind/NewsApp/blob/master/img/details.png?raw=true)
-
-### Major technologies
+### This repository contains a detailed sample app that implements
 - Language: Kotlin
 - Architecture: MVVM with clean
 - Android architecture components: ViewModel, LiveData, Room and Navigation
 - Dependency injection: koin
 - Network: Retrofit, RxJava, okHttp
 
-#### Structure of this project with 3 layers:
-- Presentation
-- Domain
-- Data
-
-#### Communication between layers
-1. UI calls method from ViewModel.
-2. ViewModel executes Use case.
-3. Use case communicate with Repositories.
-4. Each Repository returns data from a Data Source (Local or Remote).
-5. Information flows back to the UI where we display the list.
+<p align="center">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png" width="250">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png" width="250">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/filter.png" width="250">
+</p>
+<br>
+<p align="center">
+  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/details.png" width="200">
+</p>
+<br>
 
 ### The app has following packages:
 1. **data**: Contains APIs, Database
 2. **di**: Dependency providing classes using koin.
 3. **view**: View classes along with their corresponding ViewModel.
 4. **util**: Utility classes.
-5. **doamin**: Contains Use Cases, and Model Objects. Business logic happens here.
 
 ### Library reference resources:
 1. RxJava2: https://github.com/ReactiveX/RxJava

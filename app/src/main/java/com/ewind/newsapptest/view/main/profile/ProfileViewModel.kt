@@ -3,6 +3,7 @@ package com.ewind.newsapptest.view.main.profile
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ewind.newsapptest.domain.model.DUser
+import com.ewind.newsapptest.domain.repository.ProfileRepository
 import com.ewind.newsapptest.domain.usecase.ProfileUserCase
 import com.ewind.newsapptest.util.Msg
 import com.ewind.newsapptest.util.Resource
@@ -12,7 +13,7 @@ import com.ewind.newsapptest.util.ext.setSuccess
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
-class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
+class ProfileViewModel(val profileRepository: ProfileRepository) : ViewModel() {
 
     private val compositeDisposable = CompositeDisposable()
     val userLiveData = MutableLiveData<Resource<DUser>>()
@@ -22,7 +23,7 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
     fun getUser() {
         userLiveData.setLoading()
         compositeDisposable.add(
-            profileUserCase.getUser()
+            profileRepository.getUser()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     { response ->
@@ -36,7 +37,7 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
 
     fun isLogUser() {
         compositeDisposable.add(
-            profileUserCase.getUser()
+            profileRepository.getUser()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     { response ->
@@ -54,7 +55,7 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
 
     fun setUser(user: DUser) {
         compositeDisposable.add(
-            profileUserCase.saveUser(user)
+            profileRepository.saveUser(user)
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {
@@ -68,7 +69,7 @@ class ProfileViewModel(val profileUserCase: ProfileUserCase) : ViewModel() {
 
     fun deleteUser() {
         compositeDisposable.add(
-            profileUserCase.deleteUser()
+            profileRepository.deleteUser()
                 .subscribeOn(Schedulers.io())
                 .subscribe(
                     {

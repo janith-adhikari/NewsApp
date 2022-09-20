@@ -8,13 +8,13 @@
 - Network: Retrofit, RxJava, okHttp
 
 <p align="center">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home.png?raw=true" width="250">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/home_scrolled.png?raw=true" width="250">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/filter.png?raw=true" width="250">
+  <img src="https://github.com/janith-adhikari/NewsApp/blob/master/img/home.png?raw=true" width="250">
+  <img src="https://github.com/janith-adhikari/NewsApp/blob/master/img/home_scrolled.png?raw=true" width="250">
+  <img src="https://github.com/janith-adhikari/NewsApp/blob/master/img/filter.png?raw=true" width="250">
 </p>
 <br>
 <p align="center">
-  <img src="https://github.com/devinda-ewind/NewsApp/blob/master/img/details.png" width="200">
+  <img src="https://github.com/janith-adhikari/NewsApp/blob/master/img/details.png" width="200">
 </p>
 <br>
 
